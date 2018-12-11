@@ -7,14 +7,15 @@
 //
 
 import UIKit
-
+import FirebaseRemoteConfig
 class ViewController: UIViewController {
 
+    @IBOutlet weak var button: UIButton!
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let isTestUser: Bool = FirebaseRemoteConfigBoolParameterStore().value(forKey: .registerButtonTest)
+        if isTestUser {
+            self.button.backgroundColor = UIColor.red
+        }
     }
-
-
 }
 
